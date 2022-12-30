@@ -1,10 +1,19 @@
 import React from 'react';
-import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Feed from '../src/views/Feed'
+import NavBar from './components/Navbar';
+
+
 
 
 function App() {
   return (
-    <h1>App</h1>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<NavBar />}/>
+      <Route path='/feed' element={<Feed/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
