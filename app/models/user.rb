@@ -8,6 +8,7 @@ has_many :messages
 has_many :chats, through: :messages
 has_many :participations
 has_many :chats, through: :participations
+has_many :posts
 
 
 end
