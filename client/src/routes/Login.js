@@ -1,18 +1,19 @@
 import { useState } from 'react'
+import Feed from './Feed';
+import SignOut from './SignOut';
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-
-
-
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
 
 export default function Login() {
-    const [user, setUser] = useState([])
+
+    const [user, setUser] = useState({})
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-
+console.log(user)
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -33,29 +34,32 @@ export default function Login() {
                 setUser(data)
             } else if (data.errors) {
                 setError(data.errors)
-            } else if (user && user.id) { toast('OMG i Work')}
+            }
 
-            // console.log(data)
         })
     }
 
     const handleChangeUsername = e => setUsername(e.target.value)
     const handleChangePassword = e => setPassword(e.target.value)
 
-    if (user && user.id) {
-    return toast.info('🦄 Wow so easy!', {
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "colored",
-});
+    function handleSignout(){
+
+    fetch("/logout",{
+      method: "DELETE",
+    })
+    setUser({})
 
 
   }
+
+//     if (user && user.id) {
+//     return (
+//        <>
+//        <h1> {user.id} </h1>
+//        <h1> {user.bio} </h1>
+//        </>
+//     )
+//  }
 
 
     return (
@@ -77,16 +81,8 @@ theme: "colored",
                 type="submit" value="Login"
             />
         </form>
-        < ToastContainer position="top-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored" />
+
+        <button onClick={handleSignout}>Sign Out</button>
         </div>
     )
 }

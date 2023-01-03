@@ -24,12 +24,12 @@ export const SidebarData = [
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: "nav-text",
   },
-   {
-     title: "Team",
-    path: "/team",
-    icon: <IoIcons.IoMdPeople />,
-    cName: "nav-text",
-  },
+//    {
+//      title: "Team",
+//     path: "/team",
+//     icon: <IoIcons.IoMdPeople />,
+//     cName: "nav-text",
+//   },
    {
      title: "Sign out",
     path: "/signout",
