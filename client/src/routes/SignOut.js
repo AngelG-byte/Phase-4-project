@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SignOut({user}) {
+function SignOut() {
 
 
-  console.log(user)
+
   return (
     <div className="reports">
       <h1>SignOut</h1>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Messages() {
+function Messages({user}) {
   return (
     <div className="products">
       <h1>Messages</h1>
