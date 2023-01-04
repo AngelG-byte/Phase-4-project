@@ -5,11 +5,19 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "../App.css";
 import { IconContext } from "react-icons";
+import * as ioIcons from "react-icons/io5";
 
-function Navbar() {
+function Navbar({setUser}) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  function handleSignout(){
+    fetch("/logout",{
+      method: "DELETE",
+    })
+    setUser([])
+}
 
   return (
     <>
@@ -35,11 +43,20 @@ function Navbar() {
                   </Link>
                 </li>
               );
+
             })}
+            <li className="nav-text">
+                  <Link to="/" onClick={handleSignout}>
+                    <ioIcons.IoLogOut />
+                    <span>SignOut</span>
+                  </Link>
+                </li>
           </ul>
         </nav>
       </IconContext.Provider>
+
     </>
+
   );
 }
 

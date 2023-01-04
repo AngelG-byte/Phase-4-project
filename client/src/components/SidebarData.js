@@ -10,13 +10,13 @@ import * as RiIcons from "react-icons/ri";
 export const SidebarData = [
   {
     title: "Feed",
-    path: "/",
+    path: "/feed",
     icon: <AiIcons.AiFillHome />,
     cName: "nav-text",
   },
   {
     title: "Login",
-    path: "/login",
+    path: "/",
     icon: <ioIcons.IoLogIn />,
     cName: "nav-text",
   },
@@ -32,13 +32,13 @@ export const SidebarData = [
 //     icon: <IoIcons.IoMdPeople />,
 //     cName: "nav-text",
 //   },
-   {
-     title: "Sign out",
-    path: "",
-    icon: <ioIcons.IoLogOut />,
-    cName: "nav-text",
+  //  {
+  //    title: "Sign out",
+  //   path: "/signout",
+  //   icon: <ioIcons.IoLogOut />,
+  //   cName: "nav-text",
 
 
-  },
+  // },
 
 ];
