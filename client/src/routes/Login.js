@@ -1,19 +1,22 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import Feed from './Feed';
 import SignOut from './SignOut';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Link } from "react-router-dom";
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function Login() {
-
-    const [user, setUser] = useState({})
+export default function Login({setUser}) {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
     const [error, setError] = useState('')
-console.log(user)
+
+    const navigate = useNavigate()
+    const handleChangeUsername = e => setUsername(e.target.value)
+    const handleChangePassword = e => setPassword(e.target.value)
+
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -32,40 +35,44 @@ console.log(user)
         .then( data => {
             if (data.id) {
                 setUser(data)
+               navigate('/')
             } else if (data.errors) {
                 setError(data.errors)
             }
 
         })
     }
-
-    const handleChangeUsername = e => setUsername(e.target.value)
-    const handleChangePassword = e => setPassword(e.target.value)
-
     function handleSignout(){
-
     fetch("/logout",{
       method: "DELETE",
     })
-    setUser({})
+    setUser([])
+}
 
 
-  }
+// }
+        // function loginplz(e){
+        //     e.preventDefault()
+        //     const loginInfo = {
+        //         username,
+        //         password
+        //     }
+        //     handleLogin(loginInfo)
+        //     navigate("/")
+        // }
 
 //     if (user && user.id) {
-//     return (
-//        <>
-//        <h1> {user.id} </h1>
-//        <h1> {user.bio} </h1>
-//        </>
-//     )
-//  }
+//          return (
+//             navigate("/")
+//          )
+// }
 
 
     return (
+
         <div className="home">
-        <form onSubmit={handleLogin}>
-            <p style={{color: 'red'}}>{error ? error : null}</p>
+        <form >
+            {/* <p style={{color: 'red'}}>{error ? error : null}</p> */}
 
             <p>Login:</p>
 
@@ -77,12 +84,14 @@ console.log(user)
                 type="password" onChange={handleChangePassword} value={password} placeholder='password'
             />
 
-            <input
+            {/* <input
                 type="submit" value="Login"
-            />
+            /> */}
+            <button onClick={handleLogin}> login </button>
         </form>
 
         <button onClick={handleSignout}>Sign Out</button>
+
         </div>
     )
 }
