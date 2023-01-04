@@ -11,11 +11,13 @@ export default function Login({setUser}) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+
     const [error, setError] = useState('')
 
     const navigate = useNavigate()
     const handleChangeUsername = e => setUsername(e.target.value)
     const handleChangePassword = e => setPassword(e.target.value)
+
 
 
     const handleLogin = (e) => {
@@ -35,18 +37,15 @@ export default function Login({setUser}) {
         .then( data => {
             if (data.id) {
                 setUser(data)
-               navigate('/')
+               navigate('/feed')
             } else if (data.errors) {
                 setError(data.errors)
             }
 
         })
     }
-    function handleSignout(){
-    fetch("/logout",{
-      method: "DELETE",
-    })
-    setUser([])
+    function handleSignUp(){
+        navigate('/signup')
 }
 
 
@@ -90,7 +89,7 @@ export default function Login({setUser}) {
             <button onClick={handleLogin}> login </button>
         </form>
 
-        <button onClick={handleSignout}>Sign Out</button>
+        <button onClick={handleSignUp}>Create an account</button>
 
         </div>
     )

@@ -1,14 +1,72 @@
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
-
+import { Form } from "react-router-dom";
+import FeedCard from "../components/FeedCard";
+import SearchBar from "../components/SearchBar"
 function Feed({user}) {
-  // useEffect
+
+  const [postsArray, setPostsArray] = useState([])
+  const [searchedItems, setSearchedItems] = useState("")
+  const [feeling, setFeeling] = useState('')
+
+
+  function handleChangeFeeling (e){
+ setFeeling(e.target.value)
+  }
+
+  function handlePostSubmission(feeling) {
+    fetch('/post', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },body: JSON.stringify({
+    body:"feeling"
+  }),
+})
+
+
+.then(r => r.json())
+.then(data =>{
+  setPostsArray([...postsArray, data])
+})
+}
+
+
+   useEffect(()=>{
+    fetch('/posts')
+      .then(response => response.json())
+      .then(postObjects => {
+        setPostsArray(postObjects)
+        console.log(postObjects)
+      })
+   },[])
+
+   const searchedItemsArray = postsArray.filter((postObject) => {
+      return postObject.body.toLowerCase().includes(searchedItems.toLowerCase())
+   })
+
+   const allFeedCards = searchedItemsArray.map(postObject => {
+      return (
+        <FeedCard
+          postObject={postObject}
+        />
+      )
+   })
 
 
   return (
+
     <div className="home">
+      <SearchBar setSearchedItems={setSearchedItems}/>
       <h1>Welcome {user.username}</h1>
+
+      <div>
+          {allFeedCards}
+      </div>
+    <Form>
+    <input type="text" onChange={handleChangeFeeling} value={feeling} placeholder='how you feel'/>
+    <button onClick={handlePostSubmission}>Post</button>
+    </Form>
+
 </div>
   );
 }
