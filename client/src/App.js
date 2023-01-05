@@ -17,7 +17,7 @@ import SignOut from "./routes/SignOut";
 export default function App(){
 const [user, setUser] = useState([])
 // const navigate = useNavigate()
-console.log(user)
+
 
 useEffect(() => {
     fetch("/me")
