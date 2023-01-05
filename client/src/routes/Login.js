@@ -71,7 +71,7 @@ export default function Login({setUser}) {
 
         <div className="home">
         <form >
-            {/* <p style={{color: 'red'}}>{error ? error : null}</p> */}
+            <p style={{color: 'red'}}>{error ? error : null}</p>
 
             <p>Login:</p>
 

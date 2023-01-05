@@ -16,7 +16,9 @@ import SignOut from "./routes/SignOut";
 
 export default function App(){
 const [user, setUser] = useState([])
-// const navigate = useNavigate()
+const [currentRoom, setCurrentRoom] = useState([])
+const [chats, setChats] = useState([])
+
 
 
 useEffect(() => {
@@ -32,6 +34,19 @@ useEffect(() => {
       }
     } )
   }, [])
+
+  // useEffect(() => {
+  //   fetch("/chats")
+  //   .then( res => {
+  //     if (res.ok) {
+  //       res.json()
+  //       .then( data => {
+  //         setChats( data )
+  //         console.log(chats);
+  //       })
+  //     }
+  //   } )
+  // }, [])
   const AppLayout = () => (
   <>
   <Navbar user={user}/>
@@ -43,7 +58,7 @@ useEffect(() => {
         <Route path="/" element={<AppLayout/>}>
           <Route index element={<Login setUser={setUser}/>}/>
           <Route path="/feed" element={<Feed user={user} />}/>
-          <Route path="/messages" element={<Messages />}/>
+          <Route path="/messages" element={<Messages currentRoom={currentRoom}  />}/>
           <Route path="/signup" element={<Signup />}/>
           <Route path="/signout" element={<SignOut />}/>
         </Route>
@@ -52,7 +67,7 @@ useEffect(() => {
 
     return(
         <>
-        <RouterProvider router={router}/>
+         <RouterProvider router={router}/>
         </>
   )
 }

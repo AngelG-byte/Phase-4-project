@@ -12,6 +12,7 @@ function Feed({user}) {
   function handleChangeFeeling (e){
  setFeeling(e.target.value)
   }
+
 useEffect(()=>{
     fetch('/posts')
       .then(response => response.json())
@@ -34,7 +35,7 @@ useEffect(()=>{
   setPostsArray([...postsArray, data])
 })
 }
-console.log(postsArray);
+
    const searchedItemsArray = postsArray.filter((postObject) => {
       return postObject.body.toLowerCase().includes(searchedItems.toLowerCase())
    })
@@ -51,6 +52,7 @@ console.log(postsArray);
   return (
 
     <div className="home">
+
       <SearchBar setSearchedItems={setSearchedItems}/>
       <h1>Welcome {user.username}</h1>
 
@@ -61,8 +63,7 @@ console.log(postsArray);
     <input type="text" onChange={handleChangeFeeling} value={feeling} placeholder='how you feel'/>
     <button onClick={handlePostSubmission}>Post</button>
     </Form>
-
-</div>
+    </div>
   );
 }
 
