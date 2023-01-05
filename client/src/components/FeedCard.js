@@ -35,6 +35,8 @@ Modal.setAppElement('#root');
 
 
 
+
+
 return (
     <div className="home">
     <img src={postObject.user.image_url} />
@@ -47,7 +49,9 @@ return (
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-      ><p>hi</p></Modal>
+        >
+        <Popup postObject={postObject}/>
+      </Modal>
 
 
     </div>

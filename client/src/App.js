@@ -35,18 +35,18 @@ useEffect(() => {
     } )
   }, [])
 
-  useEffect(() => {
-    fetch("/chats")
-    .then( res => {
-      if (res.ok) {
-        res.json()
-        .then( data => {
-          setChats( data )
-          console.log(chats);
-        })
-      }
-    } )
-  }, [])
+  // useEffect(() => {
+  //   fetch("/chats")
+  //   .then( res => {
+  //     if (res.ok) {
+  //       res.json()
+  //       .then( data => {
+  //         setChats( data )
+  //         console.log(chats);
+  //       })
+  //     }
+  //   } )
+  // }, [])
   const AppLayout = () => (
   <>
   <Navbar user={user}/>
