@@ -12,34 +12,29 @@ function Feed({user}) {
   function handleChangeFeeling (e){
  setFeeling(e.target.value)
   }
+useEffect(()=>{
+    fetch('/posts')
+      .then(response => response.json())
+      .then(postObjects => {
+        setPostsArray(postObjects)
+      })
+   },[])
 
-  function handlePostSubmission(feeling) {
-    fetch('/post', {
+   function handlePostSubmission() {
+    fetch('/posts', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
   },body: JSON.stringify({
-    body:"feeling"
+    body:feeling
   }),
 })
-
-
 .then(r => r.json())
 .then(data =>{
   setPostsArray([...postsArray, data])
 })
 }
-
-
-   useEffect(()=>{
-    fetch('/posts')
-      .then(response => response.json())
-      .then(postObjects => {
-        setPostsArray(postObjects)
-        console.log(postObjects)
-      })
-   },[])
-
+console.log(postsArray);
    const searchedItemsArray = postsArray.filter((postObject) => {
       return postObject.body.toLowerCase().includes(searchedItems.toLowerCase())
    })
