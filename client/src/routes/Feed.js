@@ -51,6 +51,7 @@ console.log(postsArray);
   return (
 
     <div className="home">
+      
       <SearchBar setSearchedItems={setSearchedItems}/>
       <h1>Welcome {user.username}</h1>
 
@@ -61,8 +62,7 @@ console.log(postsArray);
     <input type="text" onChange={handleChangeFeeling} value={feeling} placeholder='how you feel'/>
     <button onClick={handlePostSubmission}>Post</button>
     </Form>
-
-</div>
+    </div>
   );
 }
 

@@ -4,9 +4,9 @@ class ChatsController < ApplicationController
         render json: chats
     end
     def create
-       chat_present = current_user.chat.all.map
+    #    chat_present = current_user.chats.all.map
         Participation.create!(participations_params)
-        chat = current_user.chat.create!(chat_params)
+        chat = current_user.chats.create!(chat_params)
         render json: chat, status: :created
 
     end
