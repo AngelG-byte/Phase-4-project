@@ -39,22 +39,32 @@ console.log(thread);
     })
     }
 
-  //   function deleteComment(){
-  //   fetch('/comments', {
-  //     method: 'DELETE'
-  //   })
-  // }
 
+function rerender_plzz(){
+  fetch(`/posts/${postObject.id}`)
+      .then(response => response.json())
+      .then(threadObj => {
+        setThread(threadObj.comments)
+      })
+}
         // const username = thread.map(comment=>{
         //     return( comment.user.username)
         // })
     const allCommentsForPost = thread.map(comment =>{
-       console.log(comment)
+
+      function deleteComment(){
+    fetch(`/comments/${comment.id}`, {
+      method: 'DELETE'
+    }).then(()=>{
+      rerender_plzz()
+    })
+}
+      console.log(comment)
         return (
             <div>
             <img src={comment.image}/>
             <p>{comment.username}:{comment.text}</p>
-            {/* <button onClick={deleteComment}>X</button> */}
+            <button onClick={deleteComment}>X</button>
             </div>
         )
     })

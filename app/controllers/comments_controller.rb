@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-        comment = current_user.comments.find_by(params[:id])
+        comment = current_user.comments.find(params[:id])
         comment.destroy
         render json: "pop!"
      end
