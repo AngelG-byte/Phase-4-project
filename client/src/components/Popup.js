@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Form } from "react-router-dom";
 
 
+
 export default function Popup({postObject}){
 
 
@@ -37,16 +38,24 @@ console.log(thread);
       setThread([...thread, data])
     })
     }
+
+  //   function deleteComment(){
+  //   fetch('/comments', {
+  //     method: 'DELETE'
+  //   })
+  // }
+
         // const username = thread.map(comment=>{
         //     return( comment.user.username)
         // })
     const allCommentsForPost = thread.map(comment =>{
        console.log(comment)
         return (
-            <>
+            <div>
             <img src={comment.image}/>
             <p>{comment.username}:{comment.text}</p>
-            </>
+            {/* <button onClick={deleteComment}>X</button> */}
+            </div>
         )
     })
 
