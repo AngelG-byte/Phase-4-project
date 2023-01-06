@@ -7,6 +7,7 @@ function Signup({user, setUser}) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [bio, setBio]= useState('')
+  const [image_url, setImage_url]= useState('')
   const navigate = useNavigate()
 
   const handleSignup = (e) => {
@@ -19,7 +20,8 @@ function Signup({user, setUser}) {
   body: JSON.stringify({
     username,
     password,
-    bio
+    bio,
+    image_url
   }),
 })
 navigate('/')
@@ -28,6 +30,7 @@ navigate('/')
   const handleChangeUsername = e => setUsername(e.target.value)
   const handleChangePassword = e => setPassword(e.target.value)
   const handleChangeBio = e => setBio(e.target.value)
+  const handleChangeImage = e => setImage_url(e.target.value)
 
   return (
     <div>
@@ -45,6 +48,9 @@ navigate('/')
 
         <input
           type="text" onChange={handleChangeBio} value={bio} placeholder='bio'
+        />
+        <input
+          type="text" onChange={handleChangeImage} value={image_url} placeholder='image'
         />
 
         <input
