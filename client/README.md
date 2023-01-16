@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# QQ Text
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is an anonymous online community where users can share their feelings and receive support from others. The project includes a Rails API backend with a React frontend, CRUD actions for posts and comments, and user authentication/authorization.
+## Built With
+- Ruby on Rails
+- React
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+1. Clone the repository
+2. Run `bundle install`
+3. Run `rails db:migrate`
+4. uncomment seed data in config --> seed.rb
+5. Run `rails db:seed`
+6. Run `rails s` to start the server
+7. Run `npm install` to install the frontend dependencies
+8. Run `npm start` to start the frontend server
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
+- Three models: User, Post, Comment.
+- User can create a post anonymously and other users can comment on it.
+- Full CRUD actions for at least one resource.
+- Minimum of create and read actions for EACH resource.
+- Navbar to navigate between routes.
 
-### `npm test`
+## Models and Relationships
+- User has many posts and comments.
+- Post has many comments.
+- Comment belongs to a user and a post.
+- The join table between users and posts includes a user submittable attribute called "anonymous" that allows the user to submit a post anonymously or with their username.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Client-Side Routes
+This project includes three different client-side routes using React Router:
+- "/" (home page)
+- "/posts" (view all posts)
+- "/post/:id" (view a specific post and its comments)
 
-### `npm run build`
+## Authentication/Authorization
+Users can:
+- sign up with a new user account.
+- log in to the site with a secure password and stay logged in via user ID in the session hash.
+- log out of the site.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Authors
+- Taylan Postalci , Angel , Aaron
+## Conclusion
+This project provides a safe and secure environment for users to express themselves anonymously, while also allowing others to offer support through comments. With the implementation of CRUD actions, relationships, client-side routing and authentication, it makes it a great platform for people to share their feelings.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the [Learn.co Educational Content License] License - see the [LICENSE.md](LICENSE.md) file for details.
