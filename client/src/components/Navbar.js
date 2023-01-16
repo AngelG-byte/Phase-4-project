@@ -3,21 +3,21 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
-import "../App.css";
+// import "../App.css";
 import { IconContext } from "react-icons";
 import * as ioIcons from "react-icons/io5";
 
-function Navbar({setUser}) {
+function Navbar({ setUser }) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  function handleSignout(){
-    fetch("/logout",{
+  function handleSignout() {
+    fetch("/logout", {
       method: "DELETE",
     })
     setUser([])
-}
+  }
 
   return (
     <>
@@ -46,11 +46,11 @@ function Navbar({setUser}) {
 
             })}
             <li className="nav-text">
-                  <Link to="/" onClick={handleSignout}>
-                    <ioIcons.IoLogOut />
-                    <span>SignOut</span>
-                  </Link>
-                </li>
+              <Link to="/" onClick={handleSignout}>
+                <ioIcons.IoLogOut />
+                <span>SignOut</span>
+              </Link>
+            </li>
           </ul>
         </nav>
       </IconContext.Provider>
