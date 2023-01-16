@@ -45,7 +45,7 @@ Users can:
 - log out of the site.
 
 ## Authors
-- Taylan Postalci , Angel , Aaron
+- Angel , Aaron , Taylan Postalci
 ## Conclusion
 This project provides a safe and secure environment for users to express themselves anonymously, while also allowing others to offer support through comments. With the implementation of CRUD actions, relationships, client-side routing and authentication, it makes it a great platform for people to share their feelings.
 
